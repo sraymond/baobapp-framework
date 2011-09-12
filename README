@@ -1,0 +1,10 @@
+Baobapp is a framework writen in PHP to implement fast php aplication.
+The Framework use PAC patern (very close to mvc but far of it any way).
+
+Installation :
+1) CP the repository in your server or desktop
+2) You need to have a PHP (5.3.x) , An apache web server or Ngix ... and a MySQL DB (Optionnal for a simple test)
+3) Setup a VHOST for the test :
+    * The root dir is /path_to/myFirstApp/www/
+    * Be sure the web apache server (or other's) have an access to the "framework" directory and "myFirstApp"
+4) for helt : send me a mail (see AUTHORS) ; ASAP i will provide a serious documention

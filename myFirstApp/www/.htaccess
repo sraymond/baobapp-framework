@@ -1,0 +1,17 @@
+<IfModule mod_expire.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+</IfModule>
+
+RewriteEngine On
+
+RewriteRule ^(.*/){1,}$ index.php [L]
+
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?rest=/$1
+ 
