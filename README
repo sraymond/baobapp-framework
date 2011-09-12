@@ -7,4 +7,6 @@ Installation :
 3) Setup a VHOST for the test :
     * The root dir is /path_to/myFirstApp/www/
     * Be sure the web apache server (or other's) have an access to the "framework" directory and "myFirstApp"
-4) for helt : send me a mail (see AUTHORS) ; ASAP i will provide a serious documention
+4) You need the gettext php lib and PDO php lib
+5) You need to have mod_rewrit active for the apache web server
+6) for help : send me a mail (see AUTHORS) ; ASAP i will provide a serious documention
