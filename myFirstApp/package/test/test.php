@@ -36,6 +36,9 @@ class test extends user_controler {
 	}
 
     protected function test2() {
+        $this->getView()->setMeta('title','titre pour le test2');
+        $this->getView()->setMeta('description','description  pour le test2');
+        $this->getView()->setMeta('keyword','mot clef1,2,3 etc....');
         $this->getView()->test2();
 	}
 

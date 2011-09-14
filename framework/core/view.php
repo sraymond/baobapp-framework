@@ -118,15 +118,21 @@ abstract class view extends core {
     }
 
     /**
+     * Allow to set a specific Meta TAG for a web page
+     * @param string $type : title - keyword - description
+     * @param string $content : the content for the right meta TAG ;-)
+     */
+    public function setMeta($type,$content) {
+        $this->getMetaObject()->setMeta($type, $content);
+    }
+
+    /**
      * Generate meta tag and use the lib meta in the core/lib
      *
      * @return $string meta tag
      */
     protected function meta() {
-        $meta_robot = new meta();
-        $meta_robot->GenerateMeta();
-        
-        return $meta_robot->GetFinalMeta();
+        return $this->getMeta();
     }
 
     /**
@@ -176,6 +182,27 @@ abstract class view extends core {
         $jsConcat = new jsConcat(ROOT_WWW_PATH . $this->relative_path_js . getConfig('jsfilename','outputName'));
         $jsConcat->addDir( ROOT_WWW_PATH . $this->relative_path_js . $this->dir_user_js_file_name . '/' . getConfig('jsfilename','dirname'), true);
         $jsConcat->compute(); 
+    }
+
+    /**
+     * Return the generated meta tag
+     *
+     * @return $string meta tag
+     */
+    protected function getMeta() {
+        return $this->getMetaObject()->GetFinalMeta();
+    }
+
+    /**
+     * Instanciate the meta class and return it
+     * @return object meta()
+     */
+    private function getMetaObject(){
+        if(isset($GLOBALS['meta'])) {
+            return $GLOBALS['meta'];
+        }
+        $GLOBALS['meta'] = new meta();
+        return $GLOBALS['meta'];
     }
 }
 ?>

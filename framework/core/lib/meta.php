@@ -18,14 +18,40 @@ class meta {
       $this->_meta = array('title'=>META_ROBOT_TITLE,'keyword'=>META_ROBOT_KEYWORD,'description'=>META_ROBOT_DESCRIPTION);
   }
 
-  public function GenerateMeta() {
+  public function setMeta($type,$content) {
+      switch ($type) {
+          case 'title':
+              $this->_meta['title'] = htmlentities($content,ENT_QUOTES);
+              break;
+          case 'keyword':
+              $this->_meta['keyword'] = htmlentities($content, ENT_QUOTES);
+              break;
+          default:
+              $this->_meta['description'] = htmlentities($content, ENT_QUOTES);
+              break;
+      }
+  }
+
+  /**
+   * Generate all the meta and put the result in the class variable
+   */
+  public function generateMeta() {
     $this->_final_meta = $this->_generate();
   }
 
+  /**
+   * Return the meta generated in the html format
+   * @return string
+   */
   public function GetFinalMeta () {
+    $this->generateMeta();
     return $this->_final_meta;
   }
 
+  /**
+   * Workflow for generating the html code for the meta tag
+   * @return string
+   */
   private function _generate() {
     $meta_title = '<title>' . htmlspecialchars($this->_meta['title'], ENT_QUOTES) . '</title> 
 		';
