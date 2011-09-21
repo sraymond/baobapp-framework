@@ -13,23 +13,13 @@ class meta {
   protected $_meta;//array
   protected $_final_meta;//string
 
-			
+
   function __construct(){
       $this->_meta = array('title'=>META_ROBOT_TITLE,'keyword'=>META_ROBOT_KEYWORD,'description'=>META_ROBOT_DESCRIPTION);
   }
 
   public function setMeta($type,$content) {
-      switch ($type) {
-          case 'title':
-              $this->_meta['title'] = htmlentities($content,ENT_QUOTES);
-              break;
-          case 'keyword':
-              $this->_meta['keyword'] = htmlentities($content, ENT_QUOTES);
-              break;
-          default:
-              $this->_meta['description'] = htmlentities($content, ENT_QUOTES);
-              break;
-      }
+      $this->_meta[$type] = $content;
   }
 
   /**
@@ -53,12 +43,12 @@ class meta {
    * @return string
    */
   private function _generate() {
-    $meta_title = '<title>' . htmlspecialchars($this->_meta['title'], ENT_QUOTES) . '</title> 
+    $meta_title = '<title>' . htmlspecialchars($this->_meta['title'], ENT_QUOTES) . '</title>
 		';
-		
-		$meta_keyword = '<meta name="keywords" content="' . htmlspecialchars($this->_meta['keyword'], ENT_QUOTES) . '" /> 
+
+		$meta_keyword = '<meta name="keywords" content="' . htmlspecialchars($this->_meta['keyword'], ENT_QUOTES) . '" />
 		' ;
-	
+
 		//traitement special du meta description
 		if($this->_meta['description'] != '') {
 				$dsc = str_replace("\r", "", $this->_meta['description']);
@@ -68,12 +58,12 @@ class meta {
 			} else {
 				$dsc = '';
 			}
-		$meta_description = '<meta name="description" content="' . htmlspecialchars($dsc, ENT_QUOTES) . '" /> 
+		$meta_description = '<meta name="description" content="' . htmlspecialchars($dsc, ENT_QUOTES) . '" />
 		' ;
-		
+
 		$meta = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' .$meta_title . $meta_keyword . $meta_description ;
-			
-		return $meta;	
+
+		return $meta;
   }
-}  
+}
 ?>
