@@ -12,10 +12,10 @@
 class test_view extends user_view  {
 
 
-    public function home () {
+    public function home ($input = '') {
         $html = '<h1>Home page of the test package</h1>
                  <p class="first">
-                    this is the first test ;-).
+                    ' . $input .'this is the first test ;-).
                  </p>
                  <ul>
                  You can access to this result by those URL
@@ -26,6 +26,10 @@ class test_view extends user_view  {
                  ';
         
         $this->output($html);
+    }
+
+    public function test () {
+        $this->home('Hello world : ');
     }
 
     public function test2 () {

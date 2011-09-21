@@ -13,5 +13,9 @@ class test_model extends user_model  {
 
     function __construct() {       
     }
+
+    public function testWorkflow(){
+        return true;
+    }
 }
 ?>

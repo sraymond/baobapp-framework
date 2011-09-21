@@ -31,6 +31,18 @@ class test extends user_controler {
         $this->getView()->home();
 	}
 
+    /**
+     * This is the exemple showed in the website
+     */
+    protected function hello(){
+        $result = $this->getModel()->testWorkflow();
+        if($result){
+            $this->getView()->test();
+        } else {
+            throw new Exception('Pb au sein du workflow de test',500);
+        }
+    }
+
 	protected function test1() {
         $this->home();
 	}
