@@ -12,8 +12,8 @@ class observer {
     
     private $_ressource;
     
-    function __construct($mode = '') {
-        $this->setRessource($mode);
+    function __construct($unit_test = false) {
+        $this->setRessource($unit_test);
     }
     public function getRessourceName() {
         return $this->_ressource['_p'];
@@ -52,7 +52,11 @@ class observer {
      * @param <type> $mode
      * @return <type>
      */
-    protected function setRessource() {
+    protected function setRessource($unit_test) {
+        
+        if($unit_test === true) {
+            return;
+        }
         $ressource = parse_url($_SERVER['REQUEST_URI']);
         $list_item = array();
         $new_list_item = array();

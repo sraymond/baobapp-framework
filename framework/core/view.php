@@ -12,7 +12,7 @@
  * We do not use the spl autoload to improuve performance
  * The meta lib is linked to the the framework and it is not an external lib
  */
-//require_once(ROOT_FRAMEWORK_PATH . '/core/lib/meta.php');
+require_once(ROOT_FRAMEWORK_PATH . '/core/lib/meta.php');
 
 abstract class view extends core {
     

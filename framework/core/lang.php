@@ -32,7 +32,7 @@ class lang {
 	 */
 	public function __construct($lang = self::LANG_AUTO_CHOOSE) {
 	    $this->setLang($lang);
-		bindtextdomain(getConfig('cookie','name'), ROOT_APP_PATH_LANG);
+		bindtextdomain(getConfig('cookie','name','local'), ROOT_APP_PATH_LANG);
 		bind_textdomain_codeset(getConfig('cookie','name'), 'UTF-8');
 		textdomain(getConfig('cookie','name'));
 	}
